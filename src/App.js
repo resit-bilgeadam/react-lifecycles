@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState} from 'react';
+import Counter from './components/Counter';
+import Users from './components/Users';
+import FunctionalCounter from './components/FunctionalCounter';
+import FunctionalUsers from './components/FunctionalUsers';
 
 function App() {
+  const [showCounter, setShowCounter] = useState(true);
+
+  const toggleCounter = () => setShowCounter(showCounter ? false : true)
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='container'>
+      <h1>React Lifecycles</h1>
+
+      <button onClick={toggleCounter}>Toggle Counter</button>
+
+      <hr />
+
+      <Users />
+
+      <hr />
+
+      <FunctionalUsers />
+
+      <hr />
+
+      {
+        showCounter ? <FunctionalCounter/> : null
+      }
+
+      <hr/>
+
+      {
+        showCounter ? <Counter /> : null
+      }
     </div>
   );
 }
